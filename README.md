@@ -2,15 +2,34 @@
 
 http://laravelfromscratch.com
 
-## Installation
+### Attention!!!
 
-First clone this repository, install the dependencies, and setup your .env file.
+This project extends the like the original accomplished/completed project with a docker-compose setup.    
+
+First clone this repository
+```
+git clone git@github.com:patarok/Laravel-From-Scratch-Blog-Project.git
+```
+  
+  
+## Docker-Compose
+
+### 
+It would be a good approach to first get the docker-compose environment running:    
+```
+docker compose up --build
+```
+
+  
+  ## Installation
+
+Then install the dependencies, and setup your .env file.
 
 ```
-git clone git@github.com:JeffreyWay/Laravel-From-Scratch-Blog-Project.git blog
 composer install
 cp .env.example .env
 ```
+you will have to refactor that most likely
 
 Then create the necessary database.
 
@@ -25,7 +44,7 @@ And run the initial migrations and seeders.
 php artisan migrate --seed
 ```
 
-## Further Ideas
+## Jeffrey Way on Further Ideas
 
 Of course we only had time in the Laravel From Scratch series to review the essentials of a blogging platform. You can certainly take this many 
 steps further. Here are some quick ideas that you might play with.
