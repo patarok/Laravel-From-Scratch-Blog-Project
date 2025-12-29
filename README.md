@@ -44,6 +44,14 @@ And run the initial migrations and seeders.
 php artisan migrate --seed
 ```
 
+## Auth
+Not very sophisticated. You will manually have to insert 'username' from 'users' into 'admins'  
+...as of now authorization to '/admin/posts'-access, works via Gate configuration.  
+You may want/need to play around yourself a little bit.  
+I am just delivering a cool boilerplate to learn Laravel 8 in a docker-compose environment  
+you may use in real-life dev-life.
+
+
 ## Jeffrey Way on Further Ideas
 
 Of course we only had time in the Laravel From Scratch series to review the essentials of a blogging platform. You can certainly take this many 
@@ -56,3 +64,15 @@ steps further. Here are some quick ideas that you might play with.
 5. Allow registered users to "follow" certain authors. When they publish a new post, an email should be delivered to all followers.
 6. Allow registered users to "bookmark" certain posts that they enjoyed. Then display their bookmarks in a corresponding settings page.
 7. Add an account page to update your username and upload an avatar for your profile.
+
+
+## Acknowledgements
+
+Thanks to the following people and projects for inspiration, tooling, and support:
+
+- **Laracasts** – THE platform to learn Laravel
+- **Jeffrey Way** – original idea, actual original project
+- **Oliver Buchmann** – delivered the docker-compose prefab, I beefed up here  
+
+## NOTE
+I installed some additional and interesting node packages I used in some projects back in the days.

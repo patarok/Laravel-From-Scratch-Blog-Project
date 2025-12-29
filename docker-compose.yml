@@ -81,17 +81,19 @@ services:
     ports:
       - 8025:80
   node:
-      image: node:14
-      user: "${uid}:${gid}"
-      ports:
-          - 3000:3000
-      volumes:
-          - ./:/var/www
-      networks:
-          - project
-      working_dir: /var/www
-      command: npm run watch #tail -F README.md
-
+    image: node:14
+    user: "${uid}:${gid}"
+    restart: unless-stopped
+    ports:
+        - 3000:3000  # Browsersync proxy
+        - 3001:3001  # Browsersync websocket
+    volumes:
+        - ./:/var/www  # Persist packages
+    networks:
+        - project
+    working_dir: /var/www
+    command: sh -c "npm install && npm run watch"
+    
 networks:
   project:
     driver: bridge

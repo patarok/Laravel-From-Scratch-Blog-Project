@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Models\User;
+use App\Models\Admin;
 use App\Services\Newsletter;
 use App\Services\MailchimpNewsletter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use MailchimpMarketing\ApiClient;
@@ -40,7 +42,13 @@ class AppServiceProvider extends ServiceProvider
         Model::unguard();
 
         Gate::define('admin', function (User $user) {
-            return $user->username === 'JeffreyWay';
+            // Cache for 24 hours
+            $adminUsernames = Cache::remember('admin_usernames', now()->addDay(), function () {
+                return Admin::pluck('name')->all();
+            });
+        
+            // Just standard PHP here
+            return in_array($user->username, $adminUsernames);
         });
 
         Blade::if('admin', function () {
